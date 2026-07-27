@@ -14,6 +14,13 @@ class DirectMappedCache {
         DirectMappedCache(size_t cacheSize, int bytesPerBlock);
 
         bool access(uint64_t address);
+
+        uint64_t getHits() const;
+        uint64_t getMisses() const;
+        size_t getNumLines() const;
+        const std::vector<cacheLine>& getCache() const;
+        int getOffsetBits() const;
+        int getIndexBits() const;
     
     private:
         std::vector<cacheLine> cache;
