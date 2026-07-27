@@ -1,6 +1,18 @@
 # Cache Simulator
 
-A C++ cache simulator supporting Direct Mapped, N-Way Set Associative, and Fully Associative caches with LRU replacement. Reads a trace file of memory addresses and logs each access step-by-step — showing hits, misses, evictions, and LRU state.
+A C++ cache simulator that reads a trace file of memory addresses and simulates cache behavior step-by-step.
+
+### Cache Types
+- **Direct Mapped** — each address maps to exactly one cache line
+- **N-Way Set Associative** — each address maps to a set with N possible slots
+- **Fully Associative** — any address can go in any cache line
+
+### Features
+- Trace file input (hex addresses, one per line)
+- Step-by-step access log showing hits, cold misses, and conflict evictions
+- LRU (Least Recently Used) replacement for set associative and fully associative
+- Configurable cache size, block size, and associativity
+- Per-run summary with hit rate
 
 ## Build & Run
 
