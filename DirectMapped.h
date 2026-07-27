@@ -4,6 +4,8 @@
 #include <cstdint>
 #include <vector>
 
+using namespace std;
+
 struct cacheLine {
     bool valid =  false;
     uint64_t tag = 0;
@@ -18,12 +20,12 @@ class DirectMappedCache {
         uint64_t getHits() const;
         uint64_t getMisses() const;
         size_t getNumLines() const;
-        const std::vector<cacheLine>& getCache() const;
+        const vector<cacheLine>& getCache() const;
         int getOffsetBits() const;
         int getIndexBits() const;
     
     private:
-        std::vector<cacheLine> cache;
+        vector<cacheLine> cache;
         size_t cacheSize;
         int bytesPerBlock;
 

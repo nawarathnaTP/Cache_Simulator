@@ -2,6 +2,8 @@
 #include <iomanip>
 #include "DirectMapped.h"
 
+using namespace std;
+
 int main() {
     // 256 bytes cache, 64 bytes per block = 4 cache lines
     size_t cacheSize = 256;
@@ -22,20 +24,20 @@ int main() {
 
     int numAddresses = sizeof(addresses) / sizeof(addresses[0]);
 
-    std::cout << "Direct Mapped Cache: " << cacheSize << " bytes, "
+    cout << "Direct Mapped Cache: " << cacheSize << " bytes, "
               << blockSize << " bytes/block, " << cache.getNumLines() << " lines\n";
-    std::cout << "Offset bits: " << cache.getOffsetBits()
+    cout << "Offset bits: " << cache.getOffsetBits()
               << "  Index bits: " << cache.getIndexBits() << "\n\n";
 
     for (int i = 0; i < numAddresses; i++) {
         bool hit = cache.access(addresses[i]);
-        std::cout << "Access 0x" << std::hex << std::setw(4) << std::setfill('0')
+        cout << "Access 0x" << hex << setw(4) << setfill('0')
                   << addresses[i] << ": " << (hit ? "HIT" : "MISS") << "\n";
     }
 
-    std::cout << "\nTotal hits:   " << std::dec << cache.getHits() << "\n";
-    std::cout << "Total misses: " << cache.getMisses() << "\n";
-    std::cout << "Hit rate:     " << std::fixed << std::setprecision(1)
+    cout << "\nTotal hits:   " << dec << cache.getHits() << "\n";
+    cout << "Total misses: " << cache.getMisses() << "\n";
+    cout << "Hit rate:     " << fixed << setprecision(1)
               << (100.0 * cache.getHits() / (cache.getHits() + cache.getMisses()))
               << "%\n";
 
